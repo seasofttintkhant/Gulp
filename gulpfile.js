@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var inject = require('gulp-inject');
+var del = require('del');
 
 var paths = {
   src: 'src/**/*',
@@ -21,6 +22,10 @@ var paths = {
 /**
  * DEVELOPMENT
  */
+gulp.task('clean', function() {
+  return del([paths.tmp, paths.dist]);
+});
+
 gulp.task('html', function () {
   return gulp.src(paths.srcHTML).pipe(gulp.dest(paths.tmp));
 });
@@ -42,4 +47,6 @@ gulp.task('inject', function () {
     .pipe(gulp.dest(paths.tmp));
 });
 
-gulp.task('default',gulp.series('copy','inject'));
+gulp.task('build_tmp', gulp.series('copy','inject'));
+
+gulp.task('default',gulp.series('build_tmp'));

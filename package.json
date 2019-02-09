@@ -4,6 +4,7 @@
   "description": "This is readme for gulp.",
   "main": "gulpfile.js",
   "dependencies": {
+    "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-inject": "^5.0.2"
   },
